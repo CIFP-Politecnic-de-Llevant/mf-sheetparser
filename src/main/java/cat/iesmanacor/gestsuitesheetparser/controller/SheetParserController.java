@@ -137,7 +137,7 @@ public class SheetParserController {
 
 
         Notificacio notificacio = new Notificacio();
-        notificacio.setNotifyMessage("Correus electrònics enviats correctament");
+        notificacio.setNotifyMessage("Correus electrònics enviats correctament.");
         notificacio.setNotifyType(NotificacioTipus.SUCCESS);
         return new ResponseEntity<>(notificacio, HttpStatus.OK);
     }
