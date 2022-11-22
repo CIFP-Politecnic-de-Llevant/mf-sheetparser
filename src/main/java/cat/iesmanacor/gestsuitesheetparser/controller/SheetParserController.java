@@ -58,7 +58,7 @@ public class SheetParserController {
         //Header
         List<List<String>> header = new ArrayList<>();
 
-        for(int i=0; i<numHeaders-1; i++){
+        for(int i=0; i<numHeaders; i++){
             header.add(linies.get(i));
         }
 
@@ -69,7 +69,7 @@ public class SheetParserController {
         for (int i = 0; i < numAlumnes; i++) {
             List<List<String>> alumne = new ArrayList<>();
             for(int j=0;j<numRowsAlumnes;j++){
-                alumne.add(linies.get(numHeaders-1+(i*numRowsAlumnes)+j));
+                alumne.add(linies.get(numHeaders+(i*numRowsAlumnes)+j));
             }
             alumnes.add(alumne);
         }
@@ -109,7 +109,7 @@ public class SheetParserController {
                     missatge += "<td style=\""+styleAlumne+"\">"+columnaAlumne+"</td>";
                     numColumnesAlumne++;
 
-                    if(numColumnesAlumne == numColumnEmail){
+                    if(numColumnesAlumne == numColumnEmail && columnaAlumne!=null && !columnaAlumne.isEmpty()){
                         emailAlumne = columnaAlumne;
                     }
                 }
