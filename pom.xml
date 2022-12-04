@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cat.iesmanacor</groupId>
-    <artifactId>gestsuite-sheet-parser</artifactId>
+    <artifactId>sheet-parser</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>gestsuite-sheet-parser</name>
-    <description>gestsuite-sheet-parser</description>
+    <name>sheet-parser</name>
+    <description>sheet-parser</description>
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>2021.0.4</spring-cloud.version>
