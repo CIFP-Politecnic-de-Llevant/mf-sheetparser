@@ -8,7 +8,7 @@
         <version>2.7.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>cat.iesmanacor</groupId>
+    <groupId>cat.politecnicllevant</groupId>
     <artifactId>sheet-parser</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>sheet-parser</name>
@@ -80,7 +80,7 @@
         </dependency>
 
         <dependency>
-            <groupId>cat.iesmanacor</groupId>
+            <groupId>cat.politecnicllevant</groupId>
             <artifactId>common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>

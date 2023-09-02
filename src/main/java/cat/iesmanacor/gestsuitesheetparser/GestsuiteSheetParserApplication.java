@@ -1,4 +1,4 @@
-package cat.iesmanacor.gestsuitesheetparser;
+package cat.politecnicllevant.gestsuitesheetparser;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

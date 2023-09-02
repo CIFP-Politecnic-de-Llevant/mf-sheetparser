@@ -1,4 +1,4 @@
-package cat.iesmanacor.gestsuitesheetparser.config;
+package cat.politecnicllevant.gestsuitesheetparser.config;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
