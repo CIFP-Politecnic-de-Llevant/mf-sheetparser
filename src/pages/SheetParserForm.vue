@@ -85,7 +85,7 @@ export default defineComponent({
 
       this.emails = [];
       this.emailsAlumne = [];
-      const liniesFetch = await this.$axios.post(process.env.API + '/apps/sheetparser/draft',this.sheet.id)
+      const liniesFetch = await this.$axios.post(process.env.API + '/api/sheetparser/draft',this.sheet.id)
       const linies = liniesFetch.data;
 
       this.numAlumnes = (linies.length - this.sheet.numHeaders) / this.sheet.numRowsAlumnes;
@@ -131,7 +131,7 @@ export default defineComponent({
         ok: false // we want the user to not be able to close it
       })
 
-      await this.$axios.post(process.env.API + '/apps/sheetparser/send',{
+      await this.$axios.post(process.env.API + '/api/sheetparser/send',{
         titol: this.sheet.titol,
         idsheet: this.sheet.id,
         numHeaders: this.sheet.numHeaders,
@@ -141,7 +141,7 @@ export default defineComponent({
 
       dialog.hide();
       //Redirect
-      this.$router.push('/apps/sheetparser');
+      this.$router.push('/sheetparser');
     }
   }
 })

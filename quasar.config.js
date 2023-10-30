@@ -76,6 +76,7 @@ module.exports = configure(function (/* ctx */) {
       // vitePlugins: [
       //   [ 'package-name', { ..options.. } ]
       // ]
+      env: require('dotenv').config({ path: `.env` }).parsed,
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer

@@ -6,7 +6,9 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: 'sheetparser', component: () => import('pages/SheetParserForm.vue') }
+      { path: 'sheetparser', component: () => import('pages/SheetParserForm.vue') },
+      { path: 'login', component: () => import('components/common/Login.vue'), props: { urlRedirect: "/" } },
+      { path: 'logout', component: () => import('components/common/Logout.vue') },
     ],
   },
 
