@@ -43,6 +43,7 @@ td,th{
 
 <script>
 import { defineComponent } from 'vue';
+import {axios}  from 'boot/axios'
 
 export default defineComponent({
   name: 'PageSheetParserForm',
@@ -85,7 +86,7 @@ export default defineComponent({
 
       this.emails = [];
       this.emailsAlumne = [];
-      const liniesFetch = await this.$axios.post(process.env.API + '/api/sheetparser/draft',this.sheet.id)
+      const liniesFetch = await axios.post(process.env.API + '/api/sheetparser/draft',this.sheet.id)
       const linies = liniesFetch.data;
 
       this.numAlumnes = (linies.length - this.sheet.numHeaders) / this.sheet.numRowsAlumnes;
@@ -131,7 +132,7 @@ export default defineComponent({
         ok: false // we want the user to not be able to close it
       })
 
-      await this.$axios.post(process.env.API + '/api/sheetparser/send',{
+      await axios.post(process.env.API + '/api/sheetparser/send',{
         titol: this.sheet.titol,
         idsheet: this.sheet.id,
         numHeaders: this.sheet.numHeaders,
