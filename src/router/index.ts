@@ -7,6 +7,7 @@ import {
 } from 'vue-router';
 
 import routes from './routes';
+import axios from "axios";
 
 /*
  * If not building with SSR mode, you can
@@ -31,6 +32,12 @@ export default route(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.VUE_ROUTER_BASE),
   });
+
+  Router.beforeEach((to, from, next) => {
+    axios.defaults.withCredentials = true;
+    axios.defaults.headers.common['Authorization'] = 'Bearer '+localStorage.getItem('token');
+    next();
+  })
 
   return Router;
 });
