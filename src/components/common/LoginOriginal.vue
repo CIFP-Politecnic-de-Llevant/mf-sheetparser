@@ -1,5 +1,5 @@
 <template>
-  <div class="fullscreen flex flex-center background" :style="`background-image:url(${background})`">
+  <div class="fullscreen flex flex-center background">
     <!--img src="logo/hiclipart.com.png" class="logologin" alt="logo"-->
     <q-card class="bg-negative text-white q-mb-md" v-if="displayError">
       <q-card-section>
@@ -21,75 +21,12 @@
 
         <h3 class="text-center text-black-50">GestSuite</h3>
 
-        <!--q-btn label="Entra amb Google" @click="loginGoogle" size="xl" icon="lock" class="q-mb-md" color="primary"/-->
-        <GoogleSignInButton
-          @success="handleLoginSuccess"
-          @error="handleLoginError"
-        ></GoogleSignInButton>
+        <q-btn label="Entra amb Google" @click="loginGoogle" size="xl" icon="lock" class="q-mb-md" color="primary"/>
+
       </q-card-section>
     </q-card>
-
-
   </div>
 </template>
-
-<script setup lang="ts">
-import {
-  GoogleSignInButton,
-  type CredentialResponse,
-} from "vue3-google-signin";
-import {useQuasar} from "quasar";
-import {useRoute,useRouter} from "vue-router";
-import {axios}  from 'boot/axios'
-import {ref, Ref} from "vue";
-
-const $q = useQuasar();
-const $route = useRoute()
-const $router = useRouter()
-
-const displayError:Ref<Boolean> = ref(false);
-const googleClientId= process.env.GOOGLE_CLIENT_ID;
-const logo= process.env.CENTRE_LOGO;
-const background= process.env.CENTRE_BACKGROUND;
-
-// handle success event
-const handleLoginSuccess = async (responseCredential: CredentialResponse) => {
-  const { credential } = responseCredential;
-  console.log("Access Token", credential);
-  const response = await axios.post(process.env.API+'/api/core/auth/google/login', credential)
-  console.log("response",response)
-
-  if (response && response.data) {
-    //Desem primer el token per poder enviar-lo a la petició de rol.
-    const tokenData = await response.data;
-    if(tokenData) {
-      localStorage.setItem('token', tokenData);
-    }
-
-    const responseRol = await axios.get(process.env.API+'/api/core/auth/profile/rol',{
-      method: 'GET',
-      headers: {
-        Authorization: tokenData
-      }
-    })
-    const rolData = await responseRol.data
-    localStorage.setItem('rol',JSON.stringify(rolData));
-    displayError.value = false;
-
-    //Redirect
-    $router.push("/");
-
-  } else {
-    displayError.value = true;
-  }
-};
-
-// handle an error event
-const handleLoginError = () => {
-  console.error("Login failed");
-  displayError.value = true;
-};
-</script>
 
 <style scoped>
 .logologin{
@@ -105,7 +42,7 @@ const handleLoginError = () => {
 }
 </style>
 
-<!--script>
+<script>
 
   export default {
     name: 'Login',
@@ -200,4 +137,4 @@ const handleLoginError = () => {
       }
     }
   }
-</script-->
+</script>
